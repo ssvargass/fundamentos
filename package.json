@@ -1,0 +1,28 @@
+{
+  "name": "fundamentos",
+  "version": "1.0.0",
+  "description": "Fundamentos Proyect",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ssvargass/fundamentos.git"
+  },
+  "keywords": [
+    "fundamentos",
+    "ingenieria",
+    "economica"
+  ],
+  "author": "ssvargass",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssvargass/fundamentos/issues"
+  },
+  "homepage": "https://github.com/ssvargass/fundamentos"
+}
