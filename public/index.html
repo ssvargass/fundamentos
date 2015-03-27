@@ -13,9 +13,23 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body ng-controller="TasasEquivalentesController">
+	<header>
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">
+		        <img alt="Brand" src="/images/logo.png">
+		      </a>
+		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-4">
+          <p class="navbar-text">Fundamentos de ingenieria económica</p>
+        </div>
+		  </div>
+		</nav>
+	</header>
 	<div class="container">
 		  <div class="page-header">
-				<h1>Fundamentos de Ingeniería Económica<small> Tasas Equivalentes</small></h1>
+				<h1>Tasas Equivalentes</h1>
 		  </div>
 
 			<div class="row">
@@ -25,8 +39,8 @@
 						<h3>Que buscas?</h3>
 						<p>Selecciona la variable que quieres buscar!</p>
 						<ul class="nav nav-pills">
-						  <li role="presentation" class="active"><a href="#">iem</a></li>
-						  <li role="presentation"><a href="#">J</a></li>
+						  <li role="presentation" class="active"><a href="#">F</a></li>
+						  <li role="presentation"><a href="#">iem</a></li>
 						</ul>
 					<div>
 
@@ -51,9 +65,16 @@
 
 			    <div class="input-group">
 						<span class="input-group-addon">iem</span>
-					  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="interes">
+					  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="iem">
 					  <span class="input-group-addon">.00%</span>
 					</div>
+	
+					<div class="input-group">
+						<span class="input-group-addon">F</span>
+					  <input type="text" class="form-control" placeholder="Capital" aria-describedby="final" ng-model="Final">
+					  <span class="input-group-addon">.00</span>
+					</div>
+
 
 			  </div><!-- /.col-lg-6 -->
 			</div><!-- /.row -->

@@ -7,25 +7,26 @@
     $scope.n = [
       {
         value : 12,
-        label : 'anual', 
+        liquidada : 'mes',
+
       },
       {
         value : 6,
-        label : 'semestral',
+        liquidada : 'bimestre',
+
       },
       {
-        value : 3,
-        label : 'trimestral',
+        value : 4,
+        liquidada : 'trimestre',
       },
       {
         value : 2,
-        label : 'bimestral',
-      },
-      {
-        value : 1,
-        label : 'mensual',
+        liquidada : 'semestre'
       },
     ];
+
+    
+    $scope.Final = $scope.capital * Math.pow(( 1 + $scope.ieb), $scope.n);
 
 
   }]);
