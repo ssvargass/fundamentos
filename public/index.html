@@ -1,21 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="fundamentosController">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Fundamentos de Ingeniería Económica</title>
 	
-	<script src="lib/angular.min.js"></script>
+	<script src="js/lib/angular.min.js"></script>
+	<script src="js/lib/jquery-1.11.2.min.js"></script>
+	<script src="js/lib/bootstrap.min.js"></script>
+
+	<script src="js/app.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
+<body ng-controller="TasasEquivalentesController">
 	<div class="container">
-		  <h1 class="text-center">Fundamentos de Ingeniería Económica</h1>
-		  <p class="lead">Sitio construido para los alumnos de la fundación universitaría los libertadores, en este portal podrá encontrar el contenido y simuladores estudiados durante el semestre.</p>
-		  <blockquote>
-			  <p>El interés es el perfume del capital.</p>
-			  <footer>Voltaire.</footer>
-			</blockquote>
+		  <div class="page-header">
+				<h1>Fundamentos de Ingeniería Económica<small> Tasas Equivalentes</small></h1>
+		  </div>
+
+			<div class="row">
+				<div class="col-lg-6">
+
+					<div class="input-group">
+						<h3>Que buscas?</h3>
+						<p>Selecciona la variable que quieres buscar!</p>
+						<ul class="nav nav-pills">
+						  <li role="presentation" class="active"><a href="#">iem</a></li>
+						  <li role="presentation"><a href="#">J</a></li>
+						</ul>
+					<div>
+
+					<div class="input-group">
+						<span class="input-group-addon">P</span>
+					  <input type="text" class="form-control" placeholder="Capital" aria-describedby="capital" ng-model="capital">
+					  <span class="input-group-addon">.00</span>
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon">J</span>
+					  <input type="text" class="form-control" placeholder="Tasa de interés" aria-describedby="interes" ng-model="interes">
+					  <span class="input-group-addon">.00%</span>
+					</div>
+
+			    <div class="input-group">
+			    	<span class="input-group-addon">N</span>
+			    	<div class="btn-group" role="group" aria-label="...">
+						  <button type="button" class="btn btn-default" ng-repeat="option in n">{{option.value}}</button>
+						</div>
+			    </div><!-- /input-group -->
+
+			    <div class="input-group">
+						<span class="input-group-addon">iem</span>
+					  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="interes">
+					  <span class="input-group-addon">.00%</span>
+					</div>
+
+			  </div><!-- /.col-lg-6 -->
+			</div><!-- /.row -->
+			
+
+			
+		  
 	</div>	
 </body>
 </html>
