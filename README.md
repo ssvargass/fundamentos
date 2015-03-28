@@ -1,3 +1,2 @@
 # Fundamentos de Ingenieria Economica
-## TASAS DE INTERÉS NOMINAL Y EFECTIVAS PERIÓDICAS
-## EQUIVALENCIA DE TASAS NOMINALES
+Simulador creado para tasas equivalentes.
