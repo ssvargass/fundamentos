@@ -1,4 +1,4 @@
-# Fundamentos de Ingenieria Economica
+# Fundamentos de Ingeniería Económica
 Simulador creado para tasas equivalentes.
 
 Para ejecutar en local abrir siga los pasos:
