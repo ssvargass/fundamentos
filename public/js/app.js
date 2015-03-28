@@ -13,7 +13,7 @@
       {
         value : 12,
         liquidada : 'mes',
-        efectiva : 'mensual'
+        efectiva : 'mensual',
       },
       {
         value : 6,
@@ -23,12 +23,17 @@
       {
         value : 4,
         liquidada : 'trimestre',
-        efectiva : 'trimestral'
+        efectiva : 'trimestral',
       },
       {
         value : 2,
         liquidada : 'semestre',
-        efectiva : 'semestral'
+        efectiva : 'semestral',
+      },
+      {
+        value : 1,
+        liquidada : 'anual',
+        efectiva : 'anual',
       },
     ];
 
