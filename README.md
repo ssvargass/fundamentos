@@ -1,7 +1,7 @@
 # Fundamentos de Ingenieria Economica
 Simulador creado para tasas equivalentes.
 
-Para ejecutar en local abrir en local siga los pasos:
+Para ejecutar en local abrir siga los pasos:
 
 * 1) Descargue el proyecto comprimido en la ruta https://github.com/ssvargass/fundamentos/archive/master.zip
 * 2) Descomprima master.zip
