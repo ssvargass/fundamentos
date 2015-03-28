@@ -8,80 +8,90 @@
 	<script src="js/lib/angular.min.js"></script>
 	<script src="js/lib/jquery-1.11.2.min.js"></script>
 	<script src="js/lib/bootstrap.min.js"></script>
-
+	<script src="js/lib/ng-currency.js"></script>
 	<script src="js/app.js"></script>
+
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller="TasasEquivalentesController">
-	<header>
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">
-		        <img alt="Brand" src="/images/logo.png">
-		      </a>
-		    </div>
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-4">
-          <p class="navbar-text">Fundamentos de ingenieria económica</p>
-        </div>
-		  </div>
-		</nav>
-	</header>
 	<div class="container">
 		  <div class="page-header">
 				<h1>Tasas Equivalentes</h1>
 		  </div>
-
 			<div class="row">
 				<div class="col-lg-6">
-
-					<div class="input-group">
-						<h3>Que buscas?</h3>
-						<p>Selecciona la variable que quieres buscar!</p>
-						<ul class="nav nav-pills">
-						  <li role="presentation" class="active"><a href="#">F</a></li>
-						  <li role="presentation"><a href="#">iem</a></li>
-						</ul>
-					<div>
-
-					<div class="input-group">
-						<span class="input-group-addon">P</span>
-					  <input type="text" class="form-control" placeholder="Capital" aria-describedby="capital" ng-model="capital">
-					  <span class="input-group-addon">.00</span>
-					</div>
-
-					<div class="input-group">
-						<span class="input-group-addon">J</span>
-					  <input type="text" class="form-control" placeholder="Tasa de interés" aria-describedby="interes" ng-model="interes">
-					  <span class="input-group-addon">.00%</span>
-					</div>
-
-			    <div class="input-group">
-			    	<span class="input-group-addon">N</span>
-			    	<div class="btn-group" role="group" aria-label="...">
-						  <button type="button" class="btn btn-default" ng-repeat="option in n">{{option.value}}</button>
+					<form novalidate class="simple-form">
+				
+						<!-- Tasa de Interes Nominal -->
+						<div class="input-group">
+							<span class="input-group-addon">J</span>
+						  <input type="text" class="form-control" placeholder="Tasa de interés Nominal" aria-describedby="interes" ng-model="interes" ng-keyup="getIem()" id="interes">
+						  <span class="input-group-addon">.00%</span>
 						</div>
-			    </div><!-- /input-group -->
 
-			    <div class="input-group">
-						<span class="input-group-addon">iem</span>
-					  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="iem">
-					  <span class="input-group-addon">.00%</span>
+						<!-- N -->
+				    <div class="input-group">
+				    	<span class="input-group-addon">N</span>
+				    	<div class="btn-group" role="group" aria-label="...">
+							  <button type="button" class="btn btn-default" ng-repeat="option in nOptions" ng-click="getN($index)" ng-class="{'btn-primary' : $index == selected}">{{option.value}}</button>
+							</div>
+				    </div>
+
+
+						<!-- Capital -->
+						<div class="input-group">
+							<span class="input-group-addon">P</span>
+						  <input type="text" class="form-control" placeholder="Capital" aria-describedby="capital" ng-model="capital" ng-keyup="getFinal()" ng-currency>
+						</div>
+						
+						
+						<!-- Interes efectivo Mensual -->
+				    <div class="input-group">
+							<span class="input-group-addon">iem</span>
+						  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="iem" disabled>
+						  <span class="input-group-addon">.00%</span>
+						</div>
+						
+						<!-- Final -->
+						<div class="input-group">
+							<span class="input-group-addon">F</span>
+						  <input type="text" class="form-control" placeholder="Capital" aria-describedby="final" ng-model="Final" disabled ng-currency>
+						</div>
+					</form>
+					<div ng-if="printalert" class="container-fluid">
+						<div class="alert alert-warning alert-dismissible" role="alert">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  {{liquidada}}
+						</div>
+						<div class="alert alert-warning alert-dismissible" role="alert">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  {{efectiva}}
+						</div>
 					</div>
-	
-					<div class="input-group">
-						<span class="input-group-addon">F</span>
-					  <input type="text" class="form-control" placeholder="Capital" aria-describedby="final" ng-model="Final">
-					  <span class="input-group-addon">.00</span>
+					<div class="s_results" ng-if="printalert">
+						<table class="table table-striped">
+							<thead>
+				        <tr>
+				          <th>n</th>
+				          <th>Depósito</th>
+				          <th>Intereses Causados</th>
+				          <th>Valor Futuro</th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <tr>
+				          <th scope="row">1</th>
+				          <td>Mark</td>
+				          <td>Otto</td>
+				          <td>@mdo</td>
+				        </tr>
+				      </tbody>
+						</table>
 					</div>
-
-
-			  </div><!-- /.col-lg-6 -->
+		  	</div><!-- /.col-lg-6 -->
 			</div><!-- /.row -->
-			
-
-			
-		  
-	</div>	
+	</div>
+	<script src="js/script.js"></script>
 </body>
 </html>
