@@ -15,10 +15,56 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller="TasasEquivalentesController">
-	<div class="container">
-		  <div class="page-header">
-				<h1>Tasas Equivalentes</h1>
+
+	<header>
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a href="#" >
+		        <img alt="Brand" src="images/logo.png">
+		      </a>
+		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-4">
+        	<p class="navbar-text">Fundamentos de ingenieria económica</p>
+        	<p class="navbar-text text-right a-gib">
+						<a href="https://github.com/ssvargass/fundamentos" target="_blank">
+							<span class="hidden-xs"><font><font> Ver en GitHub </font></font></span>
+							<span class="octicon octicon-mark-github"></span><img src="images/github.png"/>
+						</a>
+					</p>
+      	</div>
 		  </div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<div class="page-header">
+			<h1 class="text-center">Tasas Equivalentes</h1>
+		</div>
+
+		<div class="col-lg-6">
+			<h4 align="left">TASAS DE INTERÉS NOMINAL Y EFECTIVAS PERIÓDICAS</h4><br/><br/>
+			<p align="left">
+				Cuando nos hablen de una tasa de interés con algun porcentaje, debemos tener en cuenta lo siguiente:
+				<ol align="left">
+					<li>Que se trata de una Tasa de Interés Nominal.</li>
+					<li>Que es anual si no dicen nada en contrario.</li>
+					<li>Que la puedo dividir o liquidar en períodos mas cortos simplemente dividiéndola por el número de veces que se va a liquidar durante el año.</li>
+					<li>Que la puedo representar en este curso con la letra J.</li>
+					<li>El número de veces que se va a liquidar en el año se expresa en este curso con la letra n.</li>
+					<li>Que al dividir la nominal por el número de veces que se va a liquidar durante el año encuentro la tasa de interés efectiva periódica.</li>
+				</ol>
+			</p>
+		</div>
+
+		<div class="col-lg-6">
+			<h4 align="left">EQUIVALENCIA DE TASAS NOMINALES</h4><br/><br/>
+			<p>
+				Así como dos operaciones financieras son equivalentes si obtienen el mismo resultado económico aunque no sean iguales, dos tasas de interés aunque no sean iguales pueden ser equivalentes si obtienen el mismo resultado económico.
+			</p>
+		</div>
+	</div>
+	<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
 					<form novalidate class="simple-form">
@@ -26,8 +72,8 @@
 						<!-- Tasa de Interes Nominal -->
 						<div class="input-group">
 							<span class="input-group-addon">J</span>
-						  <input type="text" class="form-control" placeholder="Tasa de interés Nominal" aria-describedby="interes" ng-model="interes" ng-keyup="getIem()" id="interes">
-						  <span class="input-group-addon">.00%</span>
+						  <input type="text" class="form-control" placeholder="Tasa de interés Nominal" aria-describedby="interes" ng-model="interes" ng-keyup="getIem()" id="interes" number-format decimals="2">
+						  <span class="input-group-addon">%</span>
 						</div>
 
 						<!-- N -->
@@ -49,8 +95,8 @@
 						<!-- Interes efectivo Mensual -->
 				    <div class="input-group">
 							<span class="input-group-addon">iem</span>
-						  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="iem" disabled>
-						  <span class="input-group-addon">.00%</span>
+						  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="iem" disabled number-format decimals="2">
+						  <span class="input-group-addon">%</span>
 						</div>
 						
 						<!-- Final -->
@@ -96,15 +142,15 @@
 						<!-- Tasa de Interes Nominal -->
 						<div class="input-group">
 							<span class="input-group-addon">J</span>
-						  <input type="text" class="form-control" placeholder="Tasa de interés Nominal" aria-describedby="interes" ng-model="interes" ng-keyup="getIem()" id="interes">
-						  <span class="input-group-addon">.00%</span>
+						  <input type="text" class="form-control" placeholder="Tasa de interés Nominal" aria-describedby="interes" ng-model="sinteres" disabled number-format decimals="2">
+						  <span class="input-group-addon">%</span>
 						</div>
 
 						<!-- N -->
 				    <div class="input-group">
 				    	<span class="input-group-addon">N</span>
 				    	<div class="btn-group" role="group" aria-label="...">
-							  <button type="button" class="btn btn-default" ng-repeat="option in nOptions" ng-click="getN($index)" ng-class="{'btn-primary' : $index == selected}">{{option.value}}</button>
+							  <button type="button" class="btn btn-default" ng-repeat="option in nOptions" ng-click="getNs($index)" ng-class="{'btn-primary' : $index == sselected}">{{option.value}}</button>
 							</div>
 				    </div>
 
@@ -112,34 +158,34 @@
 						<!-- Capital -->
 						<div class="input-group">
 							<span class="input-group-addon">P</span>
-						  <input type="text" class="form-control" placeholder="Capital" aria-describedby="capital" ng-model="capital" ng-keyup="getFinal()" ng-currency>
+						  <input type="text" class="form-control" placeholder="Capital" aria-describedby="capital" ng-model="capital" ng-currency disabled>
 						</div>
 						
 						
 						<!-- Interes efectivo Mensual -->
 				    <div class="input-group">
 							<span class="input-group-addon">iem</span>
-						  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="iem" disabled>
-						  <span class="input-group-addon">.00%</span>
+						  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="siem" disabled number-format decimals="2">
+						  <span class="input-group-addon">%</span>
 						</div>
 						
 						<!-- Final -->
 						<div class="input-group">
 							<span class="input-group-addon">F</span>
-						  <input type="text" class="form-control" placeholder="Capital" aria-describedby="final" ng-model="Final" disabled ng-currency>
+						  <input type="text" class="form-control" placeholder="Capital" aria-describedby="final" ng-model="sFinal" disabled ng-currency>
 						</div>
 					</form>
-					<!-- <div ng-if="printalert" class="container-fluid">
+					<div ng-if="printalert" class="container-fluid">
 						<div class="alert alert-warning alert-dismissible" role="alert">
 						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						  {{liquidada}}
+						  {{sliquidada}}
 						</div>
 						<div class="alert alert-warning alert-dismissible" role="alert">
 						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						  {{efectiva}}
+						  {{sefectiva}}
 						</div>
-					</div> -->
-					<!-- <div class="s_results" ng-if="printalert">
+					</div>
+					<div class="s_results" ng-if="printalert">
 						<table class="table table-striped">
 							<thead>
 				        <tr>
@@ -150,7 +196,7 @@
 				        </tr>
 				      </thead>
 				      <tbody>
-				        <tr ng-repeat="row in rows">
+				        <tr ng-repeat="row in srows">
 				          <th scope="row">{{row.n}}</th>
 				          <td>{{row.deposito}}</td>
 				          <td>{{row.interes | currency}}</td>
@@ -159,10 +205,31 @@
 				      </tbody>
 						</table>
 					</div>
-		  	</div> /.col-lg-6 -->
+		  	</div> <!-- .col-lg-6 -->
 
 			</div><!-- /.row -->
 	</div>
-	<script src="js/script.js"></script>
+	<!-- Place this tag where you want the button to render. -->
+	<div class="center-block s_enlaces">
+		<h3 class="text-center">Enlaces de Ayuda</h3>
+		<a type="button" class="btn btn-primary btn-lg btn-block" href="files/marco_teorico.pdf" target="_blank">Marco Teórico</a>
+		<a type="button" class="btn btn-default btn-lg btn-block" href="files/presentacion.pptx" target="_blank">Presentación</a>
+	</div>
+<footer>
+	<p class="text-center">
+		<a class="github-button" href="https://github.com/ssvargass/fundamentos" data-count-href="/ssvargass/fundamentos/stargazers" data-count-api="/repos/ssvargass/fundamentos#stargazers_count">Star
+		</a>
+
+		<a class="github-button" href="https://github.com/ssvargass/fundamentos/archive/master.zip" data-icon="octicon-cloud-download">Download
+		</a>
+
+		<br/>
+
+		Creado por <a href="https://twitter.com/ssvargass" target="_blank">Sergio Vargas</a>  y Andres Daza <br/>
+		Actualmente v1.0
+	</p>
+
+</footer>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>

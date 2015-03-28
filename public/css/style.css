@@ -1,8 +1,22 @@
-.input-group{
+.input-group {
 	margin: 1em 0;
 }
 
-.glyphicon {
-	font-size: 76px;
-	padding-top: 100%;
+.a-gib{
+	float:right;
+}
+
+.navbar-text {
+	margin-top: 2%;
+}
+
+footer {
+	margin-top: 3em;
+	border-top: solid 1px #ccc;
+	padding-top: 2em;
+}
+
+.s_enlaces{
+	max-width: 300px;
+	margin-top: 3em;
 }
