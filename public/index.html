@@ -80,16 +80,87 @@
 				        </tr>
 				      </thead>
 				      <tbody>
-				        <tr>
-				          <th scope="row">1</th>
-				          <td>Mark</td>
-				          <td>Otto</td>
-				          <td>@mdo</td>
+				        <tr ng-repeat="row in rows">
+				          <th scope="row">{{row.n}}</th>
+				          <td>{{row.deposito}}</td>
+				          <td>{{row.interes | currency}}</td>
+				          <td>{{row.futuro | currency}}</td>
 				        </tr>
 				      </tbody>
 						</table>
 					</div>
 		  	</div><!-- /.col-lg-6 -->
+				<div class="col-lg-6">
+					<form novalidate class="simple-form">
+				
+						<!-- Tasa de Interes Nominal -->
+						<div class="input-group">
+							<span class="input-group-addon">J</span>
+						  <input type="text" class="form-control" placeholder="Tasa de interés Nominal" aria-describedby="interes" ng-model="interes" ng-keyup="getIem()" id="interes">
+						  <span class="input-group-addon">.00%</span>
+						</div>
+
+						<!-- N -->
+				    <div class="input-group">
+				    	<span class="input-group-addon">N</span>
+				    	<div class="btn-group" role="group" aria-label="...">
+							  <button type="button" class="btn btn-default" ng-repeat="option in nOptions" ng-click="getN($index)" ng-class="{'btn-primary' : $index == selected}">{{option.value}}</button>
+							</div>
+				    </div>
+
+
+						<!-- Capital -->
+						<div class="input-group">
+							<span class="input-group-addon">P</span>
+						  <input type="text" class="form-control" placeholder="Capital" aria-describedby="capital" ng-model="capital" ng-keyup="getFinal()" ng-currency>
+						</div>
+						
+						
+						<!-- Interes efectivo Mensual -->
+				    <div class="input-group">
+							<span class="input-group-addon">iem</span>
+						  <input type="text" class="form-control" placeholder="Tasa de interés Efectiva Mensual" aria-describedby="interes" ng-model="iem" disabled>
+						  <span class="input-group-addon">.00%</span>
+						</div>
+						
+						<!-- Final -->
+						<div class="input-group">
+							<span class="input-group-addon">F</span>
+						  <input type="text" class="form-control" placeholder="Capital" aria-describedby="final" ng-model="Final" disabled ng-currency>
+						</div>
+					</form>
+					<!-- <div ng-if="printalert" class="container-fluid">
+						<div class="alert alert-warning alert-dismissible" role="alert">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  {{liquidada}}
+						</div>
+						<div class="alert alert-warning alert-dismissible" role="alert">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  {{efectiva}}
+						</div>
+					</div> -->
+					<!-- <div class="s_results" ng-if="printalert">
+						<table class="table table-striped">
+							<thead>
+				        <tr>
+				          <th>n</th>
+				          <th>Depósito</th>
+				          <th>Intereses Causados</th>
+				          <th>Valor Futuro</th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <tr ng-repeat="row in rows">
+				          <th scope="row">{{row.n}}</th>
+				          <td>{{row.deposito}}</td>
+				          <td>{{row.interes | currency}}</td>
+				          <td>{{row.futuro | currency}}</td>
+				        </tr>
+				      </tbody>
+						</table>
+					</div>
+		  	</div> /.col-lg-6 -->
+
 			</div><!-- /.row -->
 	</div>
 	<script src="js/script.js"></script>

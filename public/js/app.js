@@ -1,11 +1,11 @@
 (function () {
   var app = angular.module('fundamentosController', ['ng-currency']);
 
-  app.controller('TasasEquivalentesController', ['$scope', '$interval', '$http',
-    function ($scope, $interval, $http) {
+  app.controller('TasasEquivalentesController', ['$scope', '$filter',
+    function ($scope, $filter) {
     // $scope.interes = 0;
     $scope.selected = 0;
-    
+    $scope.rows = [];
     $scope.liquidada = "";
     $scope.efectiva = "";
     $scope.nOptions = [
@@ -41,17 +41,43 @@
 
     $scope.getIem = function(){
       $scope.iem = $scope.interes / $scope.n.value;
-      $scope.liquidada = "liquidada " +$scope.n.liquidada+ " vencido";
-      $scope.efectiva = "Tasa de interés efectiva " +$scope.n.efectiva;
-      $scope.printalert = true;
+      $scope.liquidada = "Tasa de interes Nominal de " + $scope.interes +"% - liquidada " +$scope.n.liquidada+ " vencido";
+      $scope.efectiva = $scope.iem +"% - Tasa de interés efectiva " +$scope.n.efectiva;
+      if($scope.interes != undefined) $scope.printalert = true;
       $scope.getFinal();
     }
     
     $scope.getFinal = function(){
-      $scope.Final = $scope.capital * Math.pow(( 1 + $scope.iem/100), $scope.n.value);
+      $scope.Final = $scope.getFinalN($scope.n.value, $scope.capital, $scope.iem);
+      $scope.getTable();
     } 
 
+    $scope.getTable = function(){
+      $scope.rows = [];
+      for(var i = 0; i <= $scope.n.value; i++){
+        var interes = 0;
+        var deposito = '';
+        var futuro = $scope.getFinalN(i, $scope.capital, $scope.iem);
+        if(i > 0){
+          interes = futuro * $scope.iem/100;
+        } else {
+          deposito = $filter('currency')($scope.capital);
+        }
+        
+        var row = {
+          deposito : deposito,
+          n : i,
+          interes : interes,
+          futuro : futuro,
+        }
+        $scope.rows.push(row);
+      }
+    }
 
+    $scope.getFinalN = function(n,c,iem){
+      var n_final = c * Math.pow(( 1 + iem/100), n);
+      return n_final;
+    } 
 
   }]);
 
